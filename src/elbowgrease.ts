@@ -154,6 +154,7 @@ export class PostgresDialect extends Dialect
     async getClient()
     {
         if (this.client) return this.client;
+        // @ts-ignore
         let pg = await import('pg');
         let client = this.real_client = new pg.Client(this.connectionData);
 
@@ -191,6 +192,7 @@ export class MySQLDialect extends Dialect
     async getClient()
     {
         if (this.client) return this.client;
+        // @ts-ignore
         let mysql = await import('mysql');
         let client = mysql.createConnection(this.connectionData);
 

@@ -1,16 +1,20 @@
 {
-  "name": "elbowgrease",
-  "version": "1.0.0",
-  "description": "Automatically generate TypeScript classes for your database models",
-  "main": "src/elbowgrease.js",
-  "devDependencies": {
-    "@types/node": "^10.11.6",
-    "typescript": "^3.1.2"
-  },
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
-  },
-  "author": "Iivari Mokelainen <iivmok@gmail.com>",
-  "license": "MIT"
+    "name": "elbowgrease",
+    "version": "1.0.0",
+    "description": "Automatically generate TypeScript classes for your database models",
+    "main": "src/elbowgrease.js",
+    "bin": {
+        "elbowgrease": "./bin/elbowgrease.js"
+    },
+    "devDependencies": {
+        "@types/node": "^10.11.6",
+        "typescript": "^3.1.2"
+    },
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch"
+    },
+    "author": "Iivari Mokelainen <iivmok@gmail.com>",
+    "license": "MIT",
+    "dependencies": {}
 }

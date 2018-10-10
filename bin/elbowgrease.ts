@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import {parse as urlParse} from 'url';
 import {grease} from "../src/elbowgrease";
 import * as fs from 'fs'
