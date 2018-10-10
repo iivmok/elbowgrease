@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "ES6",
+        "lib": ["ES6"],
+        "strict": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/elbowgrease.ts",
+        "bin/elbowgrease.ts"
+    ]
+}
