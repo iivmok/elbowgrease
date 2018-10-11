@@ -12,11 +12,19 @@
         "typescript": "^3.1.2"
     },
     "scripts": {
+        "setup": "npm install --only=dev",
         "build": "tsc",
         "watch": "tsc --watch",
+        "debug": "node --inspect-brk bin/lbowgrease.js",
         "docs": "typedoc --out docs --name ElbowGrease --hideGenerator & touch docs/.nojekyll"
     },
     "author": "Iivari Mokelainen <iivmok@gmail.com>",
     "license": "MIT",
-    "dependencies": {}
+    "dependencies": {},
+    "files": [
+        "bin",
+        "src",
+        "docs",
+        "tsconfig.json"
+    ]
 }
