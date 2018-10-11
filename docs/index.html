@@ -1,0 +1,241 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ElbowGrease</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ElbowGrease</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> ElbowGrease</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="elbowgrease">ElbowGrease</h1>
+				<p>When you need TypeScript classes corresponding to your database tables - you need some ElbowGrease.</p>
+				<p><strong>MySQL</strong> and <strong>PostgreSQL</strong> supported.</p>
+				<p>Super lightweight: <em>not a single dependency</em></p>
+				<h3 id="example">Example</h3>
+				<table>
+					<tr><th colspan="2">customer</th></tr>
+					<tr>
+						<td>id</td><td>int not null</td>
+						</tr><tr>
+						<td>email</td><td>text not null</td>
+						</tr><tr>
+						<td>password</td><td>text</td>
+						</tr><tr>
+						<td>created_at</td><td>timestamp not null</td>
+					</tr>
+				</table>
+				<p>With config:</p>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"extends"</span>: <span class="hljs-string">"AutoBase"</span>,
+    <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"@serializable"</span>
+}</code></pre>
+				<p>Will result in</p>
+				<pre><code class="language-TypeScript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> customer <span class="hljs-keyword">extends</span> AutoBase
+{
+    <span class="hljs-meta">@serializable</span>
+    id: <span class="hljs-built_in">number</span>
+
+    <span class="hljs-meta">@serializable</span>
+    email: <span class="hljs-built_in">string</span>
+
+    <span class="hljs-meta">@serializable</span>
+    password: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>
+
+    <span class="hljs-meta">@serializable</span>
+    created_at: <span class="hljs-built_in">Date</span>
+}
+</code></pre>
+				<h3 id="installing-elbowgrease">Installing ElbowGrease</h3>
+				<pre><code>npm <span class="hljs-keyword">install</span> -g elbowgrease</code></pre><p>And depending on the database you&#39;re going to connect to:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> -g pg    <span class="hljs-comment"># for postgres</span>
+npm <span class="hljs-keyword">install</span> -g mysql <span class="hljs-comment"># for mysql</span></code></pre><h3 id="generating-the-code">Generating the code</h3>
+				<pre><code><span class="hljs-attribute">elbowgrease</span> postgres://user:password<span class="hljs-variable">@host</span>/database output.ts
+elbowgrease mysql://user:password<span class="hljs-variable">@host</span>/database output.ts</code></pre><h3 id="using-elbowgrease-json-config-file">Using elbowgrease.json config file</h3>
+				<p>Just run your generation with </p>
+				<pre><code><span class="hljs-attribute">elbowgrease</span></code></pre><p>with elbowgrease.json in curren directory</p>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"connectionData"</span>: <span class="hljs-string">"postgres://user:password@host/database"</span>,
+    <span class="hljs-attr">"output"</span>: <span class="hljs-string">"ts/types.ts"</span>
+}</code></pre>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"connectionData"</span>: {
+        <span class="hljs-attr">"host"</span>: <span class="hljs-string">"hostname"</span>,
+        <span class="hljs-attr">"user"</span>: <span class="hljs-string">"username"</span>
+    },
+    <span class="hljs-attr">"output"</span>: <span class="hljs-string">"ts/types.ts"</span>
+}</code></pre>
+				<p>Default options:</p>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"excludeTables"</span>: [],
+    <span class="hljs-attr">"schema"</span>: <span class="hljs-string">"public"</span>,
+    <span class="hljs-attr">"extends"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"dialect"</span>: <span class="hljs-string">"postgres"</span>,
+    <span class="hljs-attr">"exportKeyword"</span>: <span class="hljs-string">"class"</span>,
+    <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"indent"</span>: <span class="hljs-string">"    "</span>,
+    <span class="hljs-attr">"forceMemberCase"</span>: <span class="hljs-string">"none"</span>,
+    <span class="hljs-attr">"forceTypeCase"</span>: <span class="hljs-string">"none"</span>,
+    <span class="hljs-attr">"prepend"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"append"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"lineFeed"</span>: <span class="hljs-string">"\n"</span>,
+    <span class="hljs-attr">"header"</span>: <span class="hljs-literal">true</span>
+}</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_bin_elbowgrease_.html">"bin/elbowgrease"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_elbowgrease_.html">"src/elbowgrease"</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_src_dialects_.html">"src/dialects"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_src_generator_.html">"src/generator"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_src_options_.html">"src/options"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
