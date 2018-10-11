@@ -14,7 +14,7 @@
     "scripts": {
         "build": "tsc",
         "watch": "tsc --watch",
-        "docs": "typedoc --out docs --name ElbowGrease --hideGenerator"
+        "docs": "typedoc --out docs --name ElbowGrease --hideGenerator & touch docs/.nojekyll"
     },
     "author": "Iivari Mokelainen <iivmok@gmail.com>",
     "license": "MIT",
