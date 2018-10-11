@@ -1,8 +1,9 @@
 {
     "name": "elbowgrease",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Automatically generate TypeScript classes for your database models",
     "main": "src/elbowgrease.js",
+    "types": "src/elbowgrease.d.ts",
     "bin": {
         "elbowgrease": "./bin/elbowgrease.js"
     },
@@ -12,7 +13,8 @@
     },
     "scripts": {
         "build": "tsc",
-        "watch": "tsc --watch"
+        "watch": "tsc --watch",
+        "docs": "typedoc --out docs --name ElbowGrease --hideGenerator"
     },
     "author": "Iivari Mokelainen <iivmok@gmail.com>",
     "license": "MIT",
