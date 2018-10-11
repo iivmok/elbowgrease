@@ -1,5 +1,11 @@
 # ElbowGrease
 
+
+[![npm](https://img.shields.io/npm/v/elbowgrease.svg?logo=npm)](https://www.npmjs.com/package/elbowgrease)
+[![Build Status](https://travis-ci.com/iivmok/elbowgrease.svg)](https://travis-ci.com/iivmok/elbowgrease)
+
+<!-- ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/elbowgrease.png) -->
+
 When you need TypeScript classes corresponding to your database tables - you need some ElbowGrease.
 
 __MySQL__ and __PostgreSQL__ supported.
