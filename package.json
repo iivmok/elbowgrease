@@ -1,6 +1,6 @@
 {
     "name": "elbowgrease",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "homepage": "https://iivmok.github.io/elbowgrease",
     "description": "Automatically generate TypeScript classes for your database models",
     "author": "Iivari Mokelainen <iivmok@gmail.com>",

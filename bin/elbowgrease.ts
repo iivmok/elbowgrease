@@ -56,7 +56,7 @@ try
 {
     let firstPath = module.paths[0];
     let up = path.sep + '..';
-    console.log(fs.realpathSync(firstPath + up + up + up + path.sep + 'npm'));
+    fs.realpathSync(firstPath + up + up + up + path.sep + 'npm');
     runningGlobal = true;
 
 } catch { }
