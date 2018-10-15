@@ -138,7 +138,15 @@ export class PostgresDialect extends Dialect
         let pg = await import('pg');
         let client = this.real_client = new pg.Client(this.connectionData);
 
-        await client.connect();
+        try
+        {
+            await client.connect();
+        }
+        catch (e)
+        {
+            console.error('Could not connect: ' + e.message);
+            process.exit(1);
+        }
         this.options.additional_info.ip = (client as any).connection.stream.remoteAddress;
         return this.client = {
             async query(statement)
@@ -188,7 +196,14 @@ export class MySQLDialect extends Dialect
         let client = mysql.createConnection(this.connectionData);
 
         await new Promise<void>(resolve => {
-            client.connect(resolve)
+            client.connect((err /*: MysqlError*/, ...args: any[]) => {
+                if(err)
+                {
+                    console.log(`Could not connect: [${err.sqlState}] ${err.sqlMessage}`);
+                    process.exit(1);
+                }
+                resolve();
+            })
         });
 
         this.options.additional_info.ip = (client as any)._socket.remoteAddress;
