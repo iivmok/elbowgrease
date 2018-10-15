@@ -61,7 +61,7 @@ export class Generator
             output += ` extends ${o.extends}`;
         }
 
-        output += lf + lf;
+        output += lf + '{' + lf;
         let attribute = o.attribute ? o.indent + o.attribute + lf : '';
 
         table.columns.map(column => {
