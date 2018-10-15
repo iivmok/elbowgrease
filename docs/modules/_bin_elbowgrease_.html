@@ -78,6 +78,14 @@
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_bin_elbowgrease_.html#connectiondata" class="tsd-kind-icon">connection<wbr>Data</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_bin_elbowgrease_.html#options" class="tsd-kind-icon">options</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_bin_elbowgrease_.html#output" class="tsd-kind-icon">output</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_bin_elbowgrease_.html#runningglobal" class="tsd-kind-icon">running<wbr>Global</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_bin_elbowgrease_.html#start" class="tsd-kind-icon">start</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_bin_elbowgrease_.html#checkmodule" class="tsd-kind-icon">check<wbr>Module</a></li>
 							</ul>
 						</section>
 					</div>
@@ -88,10 +96,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="args" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagLet">Let</span> args</h3>
-					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;process.argv.slice(2, -2)</span></div>
+					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;process.argv.slice(2)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/387eb72/bin/elbowgrease.ts#L10">bin/elbowgrease.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L12">bin/elbowgrease.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -101,17 +109,17 @@
 					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;elbowgrease.json&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/387eb72/bin/elbowgrease.ts#L12">bin/elbowgrease.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L14">bin/elbowgrease.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="connectiondata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagLet">Let</span> connection<wbr>Data</h3>
-					<div class="tsd-signature tsd-kind-icon">connection<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.argv.slice(-2, -1)[0]</span></div>
+					<div class="tsd-signature tsd-kind-icon">connection<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/387eb72/bin/elbowgrease.ts#L8">bin/elbowgrease.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L10">bin/elbowgrease.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -121,19 +129,68 @@
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;{} as any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/387eb72/bin/elbowgrease.ts#L11">bin/elbowgrease.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L13">bin/elbowgrease.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 					<a name="output" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagLet">Let</span> output</h3>
-					<div class="tsd-signature tsd-kind-icon">output<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.argv.slice(-1)[0]</span></div>
+					<div class="tsd-signature tsd-kind-icon">output<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/387eb72/bin/elbowgrease.ts#L9">bin/elbowgrease.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L11">bin/elbowgrease.ts:11</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="runningglobal" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagLet">Let</span> running<wbr>Global</h3>
+					<div class="tsd-signature tsd-kind-icon">running<wbr>Global<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L52">bin/elbowgrease.ts:52</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="start" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagLet">Let</span> start</h3>
+					<div class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> =&nbsp;process.hrtime()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L124">bin/elbowgrease.ts:124</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="checkmodule" class="tsd-anchor"></a>
+					<h3>check<wbr>Module</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Module<span class="tsd-signature-symbol">(</span>dialect<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, module<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/iivmok/elbowgrease/blob/125d366/bin/elbowgrease.ts#L65">bin/elbowgrease.ts:65</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>dialect: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>module: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -182,6 +239,15 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_bin_elbowgrease_.html#output" class="tsd-kind-icon">output</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_bin_elbowgrease_.html#runningglobal" class="tsd-kind-icon">running<wbr>Global</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_bin_elbowgrease_.html#start" class="tsd-kind-icon">start</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_bin_elbowgrease_.html#checkmodule" class="tsd-kind-icon">check<wbr>Module</a>
 					</li>
 				</ul>
 			</nav>
