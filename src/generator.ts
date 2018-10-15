@@ -22,24 +22,60 @@ export class Generator
         this.options = options;
     }
 
+    static normalizeWords(text: string): Array<string>
+    {
+        // someThing => some Thing
+        text = text.replace(/([A-Z][a-z0-9]*)/g, ' $1');
+        // some_thing or some-thing => some thing
+        text = text.replace(/[_-]/g, ' ');
+
+        // " Some Thing " => [some, thing]
+        let words = text.split(' ').filter(x => x).map(x => x.toLowerCase());
+        return words;
+    }
+
+    static capitalize(text: string)
+    {
+        if (text.length === 1)
+        {
+            return text.toUpperCase;
+        }
+        else
+        {
+            return text.charAt(0).toUpperCase() + text.substr(1);
+        }
+    }
+
     static camelCase(text: string)
     {
-        return text.split(/[^a-z]/i).filter(x => x).map((v, i) => {
-            return i ? v.charAt(0).toUpperCase() + v.substr(1) : v;
-        }).join('');
+        let words = this.normalizeWords(text);
+        return words.map((word, i) => i ? this.capitalize(word) : word).join('');
+    }
+
+    static pascalCase(text: string)
+    {
+        let words = this.normalizeWords(text);
+        return words.map(word => this.capitalize(word)).join('');
+    }
+
+    static snakeCase(text: string)
+    {
+        let words = this.normalizeWords(text);
+        return words.join('_');
     }
 
     protected getHost()
     {
-        if (this.options.connectionData)
+        let data = this.options.connectionData;
+        if (data)
         {
-            if (typeof this.options.connectionData === 'string')
+            if (typeof data === 'string')
             {
-                return urlParse(this.options.connectionData).host
+                return urlParse(data).host
             }
             else
             {
-                return this.options.connectionData.host;
+                return data.host;
             }
         }
         return '';
@@ -52,21 +88,21 @@ export class Generator
 
     generateClass(table: Table)
     {
-        let o = this.options;
-        let lf = o.lineFeed;
+        let opt = this.options;
+        let lf = opt.lineFeed;
         let output = '';
-        output += `export ${o.exportKeyword} ${table.name}`;
-        if (o.extends)
+        output += `export ${opt.exportKeyword} ${table.name}`;
+        if (opt.extends)
         {
-            output += ` extends ${o.extends}`;
+            output += ` extends ${opt.extends}`;
         }
 
         output += lf + '{' + lf;
-        let attribute = o.attribute ? o.indent + o.attribute + lf : '';
+        let attribute = opt.attribute ? opt.indent + opt.attribute + lf : '';
 
         table.columns.map(column => {
             output += attribute;
-            output += `${o.indent}${column.name}: ${this.generateType(column)};${lf}`;
+            output += `${opt.indent}${column.name}: ${this.generateType(column)};${lf}`;
         });
         output += '}';
         return output;

@@ -95,7 +95,7 @@ with elbowgrease.json in curren directory
     "output": "ts/types.ts"
 }
 ```
-Default options:
+## Options
 ```json
 {
     "excludeTables": [],
@@ -105,11 +105,12 @@ Default options:
     "exportKeyword": "class",
     "attribute": "",
     "indent": "    ",
-    "forceMemberCase": "none",
-    "forceTypeCase": "none",
+    "memberCase": "none",
+    "typeCase": "none",
     "prepend": "",
     "append": "",
     "lineFeed": "\n",
-    "header": true
+    "header": true,
+    "additional_info": {}
 }
 ```

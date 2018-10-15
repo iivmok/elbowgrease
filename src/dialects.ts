@@ -1,6 +1,6 @@
 import {parse as urlParse} from "url";
 import {ConnectionData} from "./elbowgrease";
-import {Generator} from "./generator";
+import {ForceCase, Generator} from "./generator";
 import {Options} from "./options";
 
 export type DBColumn = { column_name, data_type, is_nullable };
@@ -75,8 +75,12 @@ export class Dialect
 
     transformColumn(column: DBColumn): Column
     {
+        let opt = this.options;
         let name = column.column_name;
-        name = Generator.camelCase(name);
+        if(opt.memberCase && opt.memberCase !== ForceCase.None)
+        {
+            name = Generator[opt.memberCase + 'Case'](name);
+        }
         return {
             name: name,
             type: this.mapColumn(column.data_type),
@@ -106,6 +110,7 @@ export class Dialect
 
     async getTables()
     {
+        let opt = this.options;
         let table_names = await this.getTableNames();
 
         let table_promises = [];
@@ -117,8 +122,14 @@ export class Dialect
             let promise = this.getColumns(table_names[i]);
             table_promises.push(promise);
             promise.then(result => {
+                let name = table_names[i];
+                if(opt.typeCase && opt.typeCase !== ForceCase.None)
+                {
+                    name = Generator[opt.typeCase + 'Case'](name);
+                }
+
                 tables.push({
-                    name: table_names[i],
+                    name: name,
                     raw_columns: result.rows,
                     columns: result.rows.map(col => this.transformColumn(col))
                 })

@@ -13,8 +13,8 @@ export interface Options
     exportKeyword?: Option
     attribute?: Option
     indent?: string
-    forceMemberCase?: ForceCase
-    forceTypeCase?: ForceCase
+    memberCase?: ForceCase
+    typeCase?: ForceCase
     prepend?: string
     append?: string
     lineFeed?: string
@@ -32,8 +32,8 @@ export const defaultOptions =
     exportKeyword: 'class',
     attribute: '',
     indent: '    ',
-    forceMemberCase: ForceCase.None,
-    forceTypeCase: ForceCase.None,
+    memberCase: ForceCase.None,
+    typeCase: ForceCase.None,
     prepend: '',
     append: '',
     lineFeed: '\n',
