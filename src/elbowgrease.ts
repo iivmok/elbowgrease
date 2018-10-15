@@ -3,7 +3,7 @@ import {Generator} from "./generator";
 import {defaultOptions, Options} from "./options";
 
 
-interface ConnectionDataObject
+export interface ConnectionDataObject
 {
     user?: string;
     database?: string;
@@ -30,14 +30,18 @@ export async function grease(connectionString: string | ConnectionData, options:
             CurrentDialect = MySQLDialect;
             break;
         default:
-            throw new Error('No dialect specified');
+            console.error('No dialect specified. Quitting.');
+            process.exit(1);
     }
 
     let dialect = new CurrentDialect(connectionString, options);
 
-    let tables: any = await dialect.getTables();
+    let tables: Array<any> = await dialect.getTables();
 
     let generator = new generatorClass(options);
     let all = generator.generateTables(tables);
-    return all;
+    return {
+        result: all,
+        tables: tables.length,
+    };
 }
